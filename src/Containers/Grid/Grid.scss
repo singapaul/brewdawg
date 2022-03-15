@@ -1,3 +1,5 @@
+@use "../../assets/variables.scss" as *;
+
 .Grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

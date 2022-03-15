@@ -3,7 +3,7 @@ import "./Beercard.scss";
 
 const Beercard = ({ beer }) => {
   return (
-    <div className="beerCard" key={beer.id}>
+    <div className="beerCard" >
       <p>Name</p>
       <p>{beer.name}</p>
       <p>{beer.tagline}</p>
