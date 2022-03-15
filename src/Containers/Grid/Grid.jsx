@@ -3,11 +3,11 @@ import React from "react";
 import Beercard from "../BeerCard/Beercard";
 import "./Grid.scss"
 
-const Grid = ({ tempData }) => {
+const Grid = ({ beers }) => {
   return (
     <div className="Grid">
-      {tempData.map((beer) => {
-        return <Beercard tempData={beer} />;
+      {beers.map((beer) => {
+        return <Beercard key={beer.id} beer={beer} />;
       })}
     </div>
   );

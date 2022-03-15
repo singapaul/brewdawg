@@ -1,13 +1,13 @@
 import React from "react";
 import "./Beercard.scss";
 
-const Beercard = ({ tempData }) => {
+const Beercard = ({ beer }) => {
   return (
-    <div className="beerCard" key={tempData.id}>
+    <div className="beerCard" key={beer.id}>
       <p>Name</p>
-      <p>{tempData.name}</p>
-      <p>{tempData.tagline}</p>
-      <img src={tempData.image_url} alt=""/>
+      <p>{beer.name}</p>
+      <p>{beer.tagline}</p>
+      <img src={beer.image_url} alt=""/>
     </div>
   );
 };
