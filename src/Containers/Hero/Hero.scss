@@ -1,0 +1,31 @@
+@use "../../assets/_variables.scss" as *;
+
+.heroContainer {
+  width: 100%;
+  min-height: 50%;
+  overflow-x: hidden;
+
+  // webkit
+
+  &__image {
+    min-width: 100%;
+    min-height: 50%;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  &__greeting {
+    width: 100%;
+    font-size: 5em;
+    color: $color-white;
+    position: absolute;
+    top: 35%;
+    
+    text-align: center;
+    transform: translate(-0%, -50%);
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    mask-image: url("//www.textures4photoshop.com/tex/thumbs/crack-grunge-texture-PNG-thumb24.png");
+    -o-mask-image: url("//www.textures4photoshop.com/tex/thumbs/crack-grunge-texture-PNG-thumb24.png");
+
+  }
+}
