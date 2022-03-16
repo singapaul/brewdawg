@@ -7,6 +7,8 @@ const Beercard = ({ beer }) => {
       <p>Name</p>
       <p>{beer.name}</p>
       <p>{beer.tagline}</p>
+      <p>{beer.abv}</p>
+      <p>{beer.first_brewed}</p>
       <img src={beer.image_url} alt=""/>
     </div>
   );

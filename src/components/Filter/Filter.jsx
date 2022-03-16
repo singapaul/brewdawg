@@ -1,5 +1,6 @@
 import React from "react";
 import Checkbox from "../../Containers/Checkbox/Checkbox";
+import Dropdown from "../../Containers/Dropdown/Dropdown";
 import SearchBox from "../SearchBox/SearchBox";
 import "./Filter.scss";
 
@@ -10,14 +11,22 @@ const Filter = ({
   searchlabel,
   checked,
   handleChange,
+
+  // dropdown props
+  labelDropdown,
+  options,
+  value,
+  handleSearchChange,
+  
 }) => {
   const checkboxArr = checked.map((box) => {
     return (
-      <Checkbox key={box.id}
+      <Checkbox
+        key={box.id}
         handleChange={handleChange}
         checked={box.checked}
         label={box.Desc}
-        id ={box.id}
+        id={box.id}
       />
     );
   });
@@ -31,7 +40,12 @@ const Filter = ({
         handleInput={handleInput}
         label={searchlabel}
       />
-
+      <Dropdown
+        label={labelDropdown}
+        options={options}
+        value={value}
+        onChange={handleSearchChange}
+      />
       <h3>Mandatory checkboxes</h3>
       <div>{checkboxArr}</div>
     </div>

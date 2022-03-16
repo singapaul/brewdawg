@@ -24,6 +24,12 @@ function App() {
     })
   );
 
+  // drop down to handle state of
+  const [dropDown, setDropDown] = useState("Search");
+
+  const handleSearchChange = (event) => {
+    setDropDown(event.target.value);
+  };
 
   const handleChange = (event) => {
     setChecked(
@@ -39,43 +45,46 @@ function App() {
   // let searchURL = url + `&beer_name=${search}`;
   let url = "https://api.punkapi.com/v2/beers?";
   const getBeers = async (search) => {
-    console.log(checked[0].checked)
-    let searchExten
+    console.log(dropDown)
+    console.log(checked[0].checked);
+    // Search Name
+    let searchExten;
     if (!search == "") {
       searchExten = `&beer_name=${search}`;
     } else {
-      searchExten = `&page=1&per_page=24`;
+      searchExten = `&page=1&per_page=80`;
+    }
+    // Strength > 6 % filter
+
+    const strengthGreaterThanSix = checked[0].checked;
+    let strengthCheck;
+
+    if (strengthGreaterThanSix === true) {
+      strengthCheck = `&abv_gt=6`;
+    } else {
+      strengthCheck = "";
     }
 
+    // Classic Range
+
+    const classicBeer = checked[1].checked;
+    let classicCheck;
+
+    if (classicBeer === true) {
+      classicCheck = "&brewed_before=01-2010";
+    } else {
+      classicCheck = "";
+    }
+
+    // API call
     try {
-      const res = await fetch(url + searchExten);
+      const res = await fetch(url + searchExten + strengthCheck + classicCheck);
       const data = await res.json(url);
       setBeers(data);
     } catch (error) {
       console.log(error);
     }
   };
-
-  // const getBeers = async (search) => {
-  //   if (!search == "") {
-  //     try {
-  //       // need to write a megastring in here which includes all of the states, remember we cant update the states directly we have to use the functions
-  //       const res = await fetch(url + `&beer_name=${search}`);
-  //       const data = await res.json();
-  //       setBeers(data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   } else {
-  //     try {
-  //       const res = await fetch(url);
-  //       const data = await res.json();
-  //       setBeers(data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  // };
 
   useEffect(() => {
     getBeers(searchTerm);
@@ -85,6 +94,23 @@ function App() {
     setSearchTerm(event.target.value);
     console.log(searchTerm);
   };
+
+  const acidityCheck = (pH) => {
+    return pH <= 4;
+  };
+  // off Filter filtering i.e. filtering by acidity
+  // const finalFilteredProducts =
+
+  // console.log(acidityFiltered);
+  let filteredbeers;
+  const acidBeer = checked[2].checked;
+  if (acidBeer === true) {
+    filteredbeers = beers.filter((beer) => acidityCheck(beer.ph));
+  } else {
+    filteredbeers = beers;
+  }
+
+  console.log(filteredbeers);
 
   return (
     <div className="App">
@@ -96,8 +122,17 @@ function App() {
         label={"Search"}
         checked={checked}
         handleChange={handleChange}
+
+        labelDropdown={"drop down"}
+        options={[
+          { label: "1", value: "fruit" },
+          { label: "V", value: "vegetable" },
+          { label: "M", value: "meat" },
+        ]}
+        value={dropDown}
+        handleSearchChange = {handleSearchChange}
       />
-      <Grid beers={beers} />
+      <Grid beers={filteredbeers} />
     </div>
   );
 }
