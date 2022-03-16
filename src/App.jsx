@@ -24,6 +24,7 @@ function App() {
     })
   );
 
+
   const handleChange = (event) => {
     setChecked(
       checked.map((obj) =>
@@ -35,14 +36,20 @@ function App() {
   };
 
   // API request
-
-  const baseURL = "https://api.punkapi.com/v2/beers?/";
+  // let searchURL = url + `&beer_name=${search}`;
+  let url = "https://api.punkapi.com/v2/beers?";
   const getBeers = async (search) => {
-    const searchURL = baseURL + `&beer_name=${search}`;
+    console.log(checked[0].checked)
+    let searchExten
+    if (!search == "") {
+      searchExten = `&beer_name=${search}`;
+    } else {
+      searchExten = `&page=1&per_page=24`;
+    }
 
     try {
-      const res = await fetch();
-      const data = await res.json(searchURL);
+      const res = await fetch(url + searchExten);
+      const data = await res.json(url);
       setBeers(data);
     } catch (error) {
       console.log(error);
