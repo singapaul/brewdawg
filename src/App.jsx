@@ -2,7 +2,7 @@ import "./App.scss";
 import Banner from "./Containers/Banner/Banner";
 import Hero from "./Containers/Hero/Hero";
 import Grid from "./Containers/Grid/Grid";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Filter from "./components/Filter/Filter";
 import checkboxes from "./assets/data/checkboxes";
 
@@ -22,12 +22,15 @@ function App() {
   const [sortDropDown, setSortDropDown] = useState("Default");
 
   // Multi slide state management
+  const [valueMulti, setValue] = useState([0, 20]);
 
-  
+  const handleSlideChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   useEffect(() => {
     getBeers(searchTerm);
-  }, [searchTerm, checked, dropDown, sortDropDown]);
+  }, [searchTerm, checked, dropDown, sortDropDown, valueMulti]);
 
   const handleSearchChange = (event) => {
     setDropDown(event.target.value);
@@ -54,7 +57,6 @@ function App() {
   // let searchURL = url + `&beer_name=${search}`;
   let url = "https://api.punkapi.com/v2/beers?";
   const getBeers = async (search) => {
-    console.log(sortDropDown);
     let searchCat;
     if (dropDown === "beerName") {
       searchCat = `&beer_name=`;
@@ -90,10 +92,16 @@ function App() {
     const strengthGreaterThanSix = checked[0].checked;
     let strengthCheck;
 
+    // if (strengthGreaterThanSix === true) {
+    //   strengthCheck = `&abv_gt=6`;
+    // } else {
+    //   strengthCheck = "";
+    // }
+
     if (strengthGreaterThanSix === true) {
-      strengthCheck = `&abv_gt=6`;
+      valueMulti[0] = 6;
     } else {
-      strengthCheck = "";
+      valueMulti[0] = 0;
     }
 
     // Classic Range
@@ -107,9 +115,16 @@ function App() {
       classicCheck = "";
     }
 
+    let minbeerStrength = valueMulti[0];
+    let maxbeerStrength = valueMulti[1];
+    let gretrThan = `&abv_gt=${minbeerStrength}`;
+    let lesssThan = `&abv_lt=${maxbeerStrength}`;
+
     // API call
     try {
-      const res = await fetch(url + searchExten + strengthCheck + classicCheck);
+      const res = await fetch(
+        url + searchExten + classicCheck + gretrThan + lesssThan
+      );
       const data = await res.json(url);
       setBeers(data);
     } catch (error) {
@@ -191,8 +206,13 @@ function App() {
         sortValue={sortDropDown}
         handleSortChange={handleSortChange}
         // props for multi slide
-
-  
+        sx={{ width: 300 }}
+        getAriaLabel={() => "Temperature range"}
+        handleSlideChange={handleSlideChange}
+        valueMulti={valueMulti}
+        valueLabelDisplay={"auto"}
+        min={0}
+        max={56}
       />
       <Grid beers={sortedBeers} />
     </div>

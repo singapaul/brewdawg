@@ -3,6 +3,8 @@ import Checkbox from "../../Containers/Checkbox/Checkbox";
 import Dropdown from "../../Containers/Dropdown/Dropdown";
 import SearchBox from "../SearchBox/SearchBox";
 import "./Filter.scss";
+import Box from "@mui/material/Box";
+import Slider from "@mui/material/Slider";
 
 // This is just a middle child
 const Filter = ({
@@ -24,7 +26,15 @@ const Filter = ({
   sortValue,
   handleSortChange,
 
+  // multi props
 
+  sx,
+  getAriaLabel,
+  handleSlideChange,
+  valueMulti,
+  valueLabelDisplay,
+  min,
+  max,
 
 }) => {
   const checkboxArr = checked.map((box) => {
@@ -64,6 +74,17 @@ const Filter = ({
         onChange={handleSortChange}
       />
       <h5>multi slide </h5>
+      <Box sx={sx}>
+        <Slider
+          getAriaLabel={() => "Temperature range"}
+          value={valueMulti}
+          onChange={handleSlideChange}
+          valueLabelDisplay={valueLabelDisplay}
+          min={min}
+          max={max}
+         
+        />
+      </Box>
     </div>
   );
 };
