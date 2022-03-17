@@ -138,7 +138,21 @@ function App() {
     sortedBeers = filteredbeers.sort((a, b) => b.abv - a.abv);
   } else if (sortDropDown === "abvLowHigh") {
     sortedBeers = filteredbeers.sort((a, b) => a.abv - b.abv);
-  } else {sortedBeers = filteredbeers}
+  } else if (sortDropDown === "releaseRecent") {
+    sortedBeers = filteredbeers.sort(function (a, b) {
+      let aa = a.first_brewed.split("/").reverse().join(),
+        bb = b.first_brewed.split("/").reverse().join();
+      return bb < aa ? -1 : bb > aa ? 1 : 0;
+    });
+  } else if (sortDropDown === "releaseOld") {
+    sortedBeers = filteredbeers.sort(function (a, b) {
+      let aa = a.first_brewed.split("/").reverse().join(),
+        bb = b.first_brewed.split("/").reverse().join();
+      return aa < bb ? -1 : aa > bb ? 1 : 0;
+    });
+  } else {
+    sortedBeers = filteredbeers;
+  }
 
   return (
     <div className="App">
