@@ -54,7 +54,7 @@ function App() {
 
   const getBeers = async (search, dropDown, checked, valueMulti) => {
     let searchCat;
-    console.log(dropDown)
+    console.log(dropDown);
     if (dropDown === "Name") {
       searchCat = `&beer_name=`;
     } else if (dropDown === "foodName") {
@@ -97,9 +97,10 @@ function App() {
     } else if (normalBeersCheck === true && strengthGreaterThanSix === false) {
       valueMulti[0] = 3;
       valueMulti[1] = 12;
+    } else if (normalBeersCheck === false && strengthGreaterThanSix === false) {
+      console.log("hello");
     } else {
-      valueMulti[0] = 0;
-      valueMulti[1] = 56;
+      console.log("hello");
     }
 
     // Classic Range
