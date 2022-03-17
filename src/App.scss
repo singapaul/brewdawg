@@ -1,6 +1,42 @@
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+$color-dark: #222;
+$color-body: #ccc;
+$color-background: white;
+
+.sidebar {
+  width: 25%;
+  height: 110vh; // experiment with this value, try changing to 110vh
+  position: sticky;
+  top: 5%;
+}
+
+.main {
+  width: 75%;
+  height:100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.main,
+.sidebar {
+  background-color: $color-background;
+  color: $color-dark;
+  padding: 15px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 3%;
+}
+
+// Decoration for demo
+
+
+
