@@ -12,12 +12,17 @@ const Filter = ({
   checked,
   handleChange,
 
-  // dropdown props
+  // dropdown search props
   labelDropdown,
   options,
   value,
   handleSearchChange,
-  
+
+  // sort props
+  labelSort,
+  sortOptions,
+  sortValue,
+  handleSortChange,
 }) => {
   const checkboxArr = checked.map((box) => {
     return (
@@ -48,6 +53,14 @@ const Filter = ({
       />
       <h3>Mandatory checkboxes</h3>
       <div>{checkboxArr}</div>
+
+      {/* DropDown for sort */}
+      <Dropdown
+        label={labelSort}
+        options={sortOptions}
+        value={sortValue}
+        onChange={handleSortChange}
+      />
     </div>
   );
 };

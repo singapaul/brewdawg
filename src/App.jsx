@@ -19,14 +19,19 @@ function App() {
     })
   );
   const [dropDown, setDropDown] = useState("Name");
+  const [sortDropDown, setSortDropDown] = useState("Default");
 
   useEffect(() => {
     getBeers(searchTerm);
-  }, [searchTerm, checked, dropDown]);
+  }, [searchTerm, checked, dropDown, sortDropDown]);
 
   const handleSearchChange = (event) => {
     setDropDown(event.target.value);
   };
+  const handleSortChange = (event) => {
+    setSortDropDown(event.target.value);
+  };
+
   const handleChange = (event) => {
     setChecked(
       checked.map((obj) =>
@@ -39,16 +44,13 @@ function App() {
 
   const handleInput = (event) => {
     setSearchTerm(event.target.value);
-    console.log(searchTerm);
   };
 
   // API request
   // let searchURL = url + `&beer_name=${search}`;
   let url = "https://api.punkapi.com/v2/beers?";
   const getBeers = async (search) => {
-    console.log(dropDown);
-    // First assign the category of the extension
-    // dropdown is assigned
+    console.log(sortDropDown);
     let searchCat;
     if (dropDown === "beerName") {
       searchCat = `&beer_name=`;
@@ -115,7 +117,6 @@ function App() {
   const acidityCheck = (pH) => {
     return pH <= 4;
   };
-
   let filteredbeers;
   const acidBeer = checked[2].checked;
   if (acidBeer === true) {
@@ -123,6 +124,21 @@ function App() {
   } else {
     filteredbeers = beers;
   }
+  // Filter to check for valid thumbnail below:
+
+  // sorting the beers
+  // sort by release date
+  // sort strength
+  // console.log(filteredbeers[0].first_brewed);
+  // console.log(filteredbeers[0].abv);
+  let sortedBeers;
+  if (sortDropDown === "default") {
+    sortedBeers = filteredbeers;
+  } else if (sortDropDown === "abvHighLow") {
+    sortedBeers = filteredbeers.sort((a, b) => b.abv - a.abv);
+  } else if (sortDropDown === "abvLowHigh") {
+    sortedBeers = filteredbeers.sort((a, b) => a.abv - b.abv);
+  } else {sortedBeers = filteredbeers}
 
   return (
     <div className="App">
@@ -134,6 +150,7 @@ function App() {
         label={"Search"}
         checked={checked}
         handleChange={handleChange}
+        // Dropdown search sort
         labelDropdown={"drop down"}
         options={[
           { label: "Name", value: "beerName" },
@@ -144,8 +161,19 @@ function App() {
         ]}
         value={dropDown}
         handleSearchChange={handleSearchChange}
+        // sort search props
+        labelSort={"sorty dropdown"}
+        sortOptions={[
+          { label: "Default", value: "default" },
+          { label: "ABV % (high to low)", value: "abvHighLow" },
+          { label: "ABV % (low to high)", value: "abvLowHigh" },
+          { label: "Release date (Earliest)", value: "releaseRecent" },
+          { label: "Release date (Oldest)", value: "releaseOld" },
+        ]}
+        sortValue={sortDropDown}
+        handleSortChange={handleSortChange}
       />
-      <Grid beers={filteredbeers} />
+      <Grid beers={sortedBeers} />
     </div>
   );
 }
