@@ -2,7 +2,7 @@ import "./App.scss";
 import Banner from "./Containers/Banner/Banner";
 import Hero from "./Containers/Hero/Hero";
 import Grid from "./Containers/Grid/Grid";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Filter from "./components/Filter/Filter";
 import checkboxes from "./assets/data/checkboxes";
 
@@ -20,6 +20,10 @@ function App() {
   );
   const [dropDown, setDropDown] = useState("Name");
   const [sortDropDown, setSortDropDown] = useState("Default");
+
+  // Multi slide state management
+
+  
 
   useEffect(() => {
     getBeers(searchTerm);
@@ -186,6 +190,9 @@ function App() {
         ]}
         sortValue={sortDropDown}
         handleSortChange={handleSortChange}
+        // props for multi slide
+
+  
       />
       <Grid beers={sortedBeers} />
     </div>

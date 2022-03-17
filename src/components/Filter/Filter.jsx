@@ -23,6 +23,9 @@ const Filter = ({
   sortOptions,
   sortValue,
   handleSortChange,
+
+
+
 }) => {
   const checkboxArr = checked.map((box) => {
     return (
@@ -53,7 +56,6 @@ const Filter = ({
       />
       <h3>Mandatory checkboxes</h3>
       <div>{checkboxArr}</div>
-
       {/* DropDown for sort */}
       <Dropdown
         label={labelSort}
@@ -61,6 +63,7 @@ const Filter = ({
         value={sortValue}
         onChange={handleSortChange}
       />
+      <h5>multi slide </h5>
     </div>
   );
 };
