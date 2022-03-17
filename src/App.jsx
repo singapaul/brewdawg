@@ -28,10 +28,6 @@ function App() {
     setValue(newValue);
   };
 
-  useEffect(() => {
-    getBeers(searchTerm);
-  }, [searchTerm, checked, dropDown, sortDropDown, valueMulti]);
-
   const handleSearchChange = (event) => {
     setDropDown(event.target.value);
   };
@@ -55,10 +51,11 @@ function App() {
 
   // API request
   // let searchURL = url + `&beer_name=${search}`;
-  let url = "https://api.punkapi.com/v2/beers?";
-  const getBeers = async (search) => {
+
+  const getBeers = async (search, dropDown, checked, valueMulti) => {
     let searchCat;
-    if (dropDown === "beerName") {
+    console.log(dropDown)
+    if (dropDown === "Name") {
       searchCat = `&beer_name=`;
     } else if (dropDown === "foodName") {
       searchCat = `&food=`;
@@ -74,6 +71,7 @@ function App() {
 
     // Search Name
     let searchExten;
+    let url = "https://api.punkapi.com/v2/beers?";
 
     // if (!search == "") {
     //   searchExten = `&beer_name=${search}`;
@@ -81,27 +79,27 @@ function App() {
     //   searchExten = `&page=1&per_page=80`;
     // }
 
-    if (!search == "") {
+    if (search !== "") {
       searchExten = searchCat + search;
     } else {
       searchExten = `&page=1&per_page=80`;
     }
 
-    // Strength > 6 % filter
-
+    // Strength checks (3 cases)
     const strengthGreaterThanSix = checked[0].checked;
-    let strengthCheck;
-
-    // if (strengthGreaterThanSix === true) {
-    //   strengthCheck = `&abv_gt=6`;
-    // } else {
-    //   strengthCheck = "";
-    // }
-
-    if (strengthGreaterThanSix === true) {
+    const normalBeersCheck = checked[3].checked;
+    if (normalBeersCheck === true && strengthGreaterThanSix === true) {
       valueMulti[0] = 6;
+      valueMulti[1] = 12;
+    } else if (normalBeersCheck === false && strengthGreaterThanSix === true) {
+      valueMulti[0] = 6;
+      valueMulti[1] = 56;
+    } else if (normalBeersCheck === true && strengthGreaterThanSix === false) {
+      valueMulti[0] = 3;
+      valueMulti[1] = 12;
     } else {
       valueMulti[0] = 0;
+      valueMulti[1] = 56;
     }
 
     // Classic Range
@@ -121,6 +119,7 @@ function App() {
     let lesssThan = `&abv_lt=${maxbeerStrength}`;
 
     // API call
+
     try {
       const res = await fetch(
         url + searchExten + classicCheck + gretrThan + lesssThan
@@ -173,6 +172,10 @@ function App() {
     sortedBeers = filteredbeers;
   }
 
+  useEffect(() => {
+    getBeers(searchTerm, dropDown, checked, valueMulti);
+  }, [checked, dropDown, searchTerm, valueMulti]);
+
   return (
     <div className="App">
       <Hero />
@@ -183,7 +186,6 @@ function App() {
         label={"Search"}
         checked={checked}
         handleChange={handleChange}
-        // Dropdown search sort
         labelDropdown={"drop down"}
         options={[
           { label: "Name", value: "beerName" },

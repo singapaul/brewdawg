@@ -13,6 +13,11 @@ const checkboxes = [
     id: 3,
     Desc: "High-Acidity",
     
+  }, 
+  {
+    id: 4,
+    Desc: "Normal Beers Only",
+    
   } 
 ];
 
