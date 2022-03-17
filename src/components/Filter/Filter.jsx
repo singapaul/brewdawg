@@ -82,6 +82,7 @@ const Filter = ({
           valueLabelDisplay={valueLabelDisplay}
           min={min}
           max={max}
+          disableSwap
          
         />
       </Box>
