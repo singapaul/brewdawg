@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/brewdawg/static/css/main.c24097d9.css",
+    "main.js": "/brewdawg/static/js/main.8e0e0fa3.js",
+    "static/js/787.4c110237.chunk.js": "/brewdawg/static/js/787.4c110237.chunk.js",
+    "static/media/SiteLanding.png": "/brewdawg/static/media/SiteLanding.6d6194e655f1c77b46ce.png",
+    "index.html": "/brewdawg/index.html",
+    "main.c24097d9.css.map": "/brewdawg/static/css/main.c24097d9.css.map",
+    "main.8e0e0fa3.js.map": "/brewdawg/static/js/main.8e0e0fa3.js.map",
+    "787.4c110237.chunk.js.map": "/brewdawg/static/js/787.4c110237.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c24097d9.css",
+    "static/js/main.8e0e0fa3.js"
+  ]
+}
