@@ -2,7 +2,7 @@
 
 .beerCard {
   border: 2px solid black;
-  height: 300px;
+  height: 290px;
   aspect-ratio: auto 1/1;
   background: pink;
   margin: 0;
@@ -11,26 +11,36 @@
   display: grid;
   grid-template-columns: 5% 1fr 5%;
   grid-template-rows: 10% 1fr 10%;
+  box-sizing: border-box;
 
   &__result {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     height: 90%;
-    grid-area: 2/2/3/3;
+    grid-area: 2/2/4/3;
+    box-sizing: border-box;
 
     &-name {
       color: $color-white;
       text-align: center;
+      font-size: 25px;
+      padding: 15px 15px;
+      flex-basis: auto;
+
     }
 
     &-image {
-      width: 18%;
+      height: 40%;
+      flex-shrink: 2;
     }
 
     &-abv {
       color: $color-white;
+      font-size: 20px;
+      font-weight: bold;
+      flex-basis: auto;
     }
   }
 }
@@ -40,8 +50,7 @@
   white-space: nowrap;
   overflow-x: hidden;
   background-color: white;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width:90%;
-
+  margin: 10px 0;
+  width: 100%;
+  text-align: center;
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Beercard.scss";
 import Ticker from "react-ticker";
-import Color, { Palette } from "color-thief-react";
+import { Palette } from "color-thief-react";
 const Loading = () => <div>Loading...</div>;
 
 const Beercard = ({ beer }) => {
@@ -37,7 +37,7 @@ const Beercard = ({ beer }) => {
                 src={beer.image_url}
                 alt=""
               />
-              <p className="beerCard__result-abv">ABV: {beer.abv}</p>
+              <p className="beerCard__result-abv">ABV {beer.abv} %</p>
             </div>
           </div>
         );

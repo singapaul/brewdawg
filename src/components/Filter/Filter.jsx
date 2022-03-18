@@ -51,8 +51,8 @@ const Filter = ({
 
   return (
     <div className="filter">
-      <h2>Filter Box</h2>
-      <h3>Search Box</h3>
+      <h2>Filter Dawg</h2>
+      <h5>Search dawgs</h5>
       <SearchBox
         searchTerm={searchTerm}
         handleInput={handleInput}
@@ -64,7 +64,7 @@ const Filter = ({
         value={value}
         onChange={handleSearchChange}
       />
-      <h3>Mandatory checkboxes</h3>
+      <h5>Checkbox Dawgs</h5>
       <div>{checkboxArr}</div>
       {/* DropDown for sort */}
       <Dropdown
@@ -73,7 +73,7 @@ const Filter = ({
         value={sortValue}
         onChange={handleSortChange}
       />
-      <h5>multi slide </h5>
+      <h5>Slidey Dawgs (ABV %) </h5>
       <Box sx={sx}>
         <Slider
           getAriaLabel={() => "Temperature range"}
