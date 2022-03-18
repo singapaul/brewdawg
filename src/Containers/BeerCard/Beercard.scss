@@ -28,7 +28,6 @@
       font-size: 25px;
       padding: 15px 15px;
       flex-basis: auto;
-
     }
 
     &-image {
@@ -41,6 +40,38 @@
       font-size: 20px;
       font-weight: bold;
       flex-basis: auto;
+    }
+  }
+}
+
+.beerCardClick {
+  border: 2px solid black;
+  height: 290px;
+  aspect-ratio: auto 1/1;
+  background: pink;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  &__resultClick {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    overflow-y: auto;
+
+    h5,
+    h6 {
+      margin: 5px 0;
+    }
+
+    p {
+      text-align: justify;
+      text-justify: inter-word;
+      margin: 5px 10px;
     }
   }
 }
