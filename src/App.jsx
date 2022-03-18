@@ -5,6 +5,7 @@ import Grid from "./Containers/Grid/Grid";
 import { useState, useEffect } from "react";
 import Filter from "./components/Filter/Filter";
 import checkboxes from "./assets/data/checkboxes";
+import SiteLanding from "./assets/images/SiteLanding.png";
 
 function App() {
   const [beers, setBeers] = useState([]);
@@ -182,7 +183,6 @@ function App() {
       <Hero />
       <Banner />
       <div className="wrapper">
-
         <div className="sidebar">
           <Filter
             searchTerm={searchTerm}

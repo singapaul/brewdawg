@@ -1,6 +1,30 @@
 @use "../../assets/variables.scss" as *;
 
-.filter{height: 100%;
-width: 100%;}
+.filter {
+  height: 50vh;
+  width: 100%;
+  background-color: pink;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: solid 2px black;
 
+  &__searchBox {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0;
+  }
 
+  &__checkBoxes {
+    margin: 10px 0;
+  }
+
+  &__dropDown {
+    margin: 10px 0;
+  }
+
+  &__slider {
+    margin: 10px 0;
+  }
+}
