@@ -5,7 +5,6 @@ import Grid from "./Containers/Grid/Grid";
 import { useState, useEffect } from "react";
 import Filter from "./components/Filter/Filter";
 import checkboxes from "./assets/data/checkboxes";
-import SiteLanding from "./assets/images/SiteLanding.png";
 
 function App() {
   const [beers, setBeers] = useState([]);
@@ -73,12 +72,6 @@ function App() {
     // Search Name
     let searchExten;
     let url = "https://api.punkapi.com/v2/beers?";
-
-    // if (!search == "") {
-    //   searchExten = `&beer_name=${search}`;
-    // } else {
-    //   searchExten = `&page=1&per_page=80`;
-    // }
 
     if (search !== "") {
       searchExten = searchCat + search;

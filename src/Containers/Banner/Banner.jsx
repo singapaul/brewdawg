@@ -1,14 +1,19 @@
-import React from 'react'
-import "./Banner.scss"
+import React from "react";
+import "./Banner.scss";
+import Ticker from "react-ticker";
 
 const Banner = () => {
   return (
     <div className="Banner">
-      <p className="Banner__text">Why not check out *beer name* it's a *tagline* and it's *delicous* at only *4.5%* </p>
-
-
+      <Ticker className="ticker">
+        {({ index }) => (
+          <>
+            <p>{"beer"}</p>
+          </>
+        )}
+      </Ticker>
     </div>
-  )
-}
+  );
+};
 
-export default Banner
+export default Banner;

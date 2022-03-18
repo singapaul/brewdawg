@@ -52,6 +52,12 @@ const Beercard = ({ beer }) => {
                   <h5>{beer.name}</h5>
                   <h6>Release: {beer.first_brewed}</h6>
                   <p>{beer.description}</p>
+                  <h6>Food Pairings</h6>
+                  <ul>
+                    <li>{beer.food_pairing[0]}</li>
+                    <li>{beer.food_pairing[1]}</li>
+                    <li>{beer.food_pairing[2]}</li>
+                  </ul>
                 </div>
               </div>
             )}
