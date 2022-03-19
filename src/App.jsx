@@ -5,6 +5,14 @@ import Grid from "./Containers/Grid/Grid";
 import { useState, useEffect } from "react";
 import Filter from "./components/Filter/Filter";
 import checkboxes from "./assets/data/checkboxes";
+import {
+  searchExtensionFunction,
+  classCheckFunction,
+  acidFilterFunction,
+  sortBeersFunction,
+  searchCategoryFunction,
+  preAPIFilterCheck,
+} from "./utilities/functions.js";
 
 function App() {
   const [beers, setBeers] = useState([]);
@@ -49,64 +57,26 @@ function App() {
     setSearchTerm(event.target.value);
   };
 
-  // API request
-  // let searchURL = url + `&beer_name=${search}`;
-
   const getBeers = async (search, dropDown, checked, valueMulti) => {
-    let searchCat;
-    console.log(dropDown);
-    if (dropDown === "Name") {
-      searchCat = `&beer_name=`;
-    } else if (dropDown === "foodName") {
-      searchCat = `&food=`;
-    } else if (dropDown === "maltName") {
-      searchCat = `&malt=`;
-    } else if (dropDown === "hopsName") {
-      searchCat = `&hops=`;
-    } else if (dropDown === "yeastName") {
-      searchCat = `&yeast=`;
-    } else {
-      searchCat = "";
-    }
+    const searchCat = searchCategoryFunction(dropDown);
 
-    // Search Name
-    let searchExten;
     let url = "https://api.punkapi.com/v2/beers?";
 
-    if (search !== "") {
-      searchExten = searchCat + search;
-    } else {
-      searchExten = `&page=1&per_page=80`;
-    }
+    const searchExten = searchExtensionFunction(search, searchCat);
 
     // Strength checks (3 cases)
     const strengthGreaterThanSix = checked[0].checked;
     const normalBeersCheck = checked[3].checked;
-    if (normalBeersCheck === true && strengthGreaterThanSix === true) {
-      valueMulti[0] = 6;
-      valueMulti[1] = 12;
-    } else if (normalBeersCheck === false && strengthGreaterThanSix === true) {
-      valueMulti[0] = 6;
-      valueMulti[1] = 56;
-    } else if (normalBeersCheck === true && strengthGreaterThanSix === false) {
-      valueMulti[0] = 3;
-      valueMulti[1] = 12;
-    } else if (normalBeersCheck === false && strengthGreaterThanSix === false) {
-      console.log("hello");
-    } else {
-      console.log("hello");
-    }
+    const MultiVals = preAPIFilterCheck(
+      normalBeersCheck,
+      strengthGreaterThanSix
+    );
 
-    // Classic Range
+    valueMulti[0] = MultiVals[0];
+    valueMulti[1] = MultiVals[1];
 
     const classicBeer = checked[1].checked;
-    let classicCheck;
-
-    if (classicBeer === true) {
-      classicCheck = "&brewed_before=01-2010";
-    } else {
-      classicCheck = "";
-    }
+    const classicCheck = classCheckFunction(classicBeer);
 
     let minbeerStrength = valueMulti[0];
     let maxbeerStrength = valueMulti[1];
@@ -126,46 +96,8 @@ function App() {
     }
   };
 
-  // Post API call filters
-  const acidityCheck = (pH) => {
-    return pH <= 4;
-  };
-  let filteredbeers;
-  const acidBeer = checked[2].checked;
-  if (acidBeer === true) {
-    filteredbeers = beers.filter((beer) => acidityCheck(beer.ph));
-  } else {
-    filteredbeers = beers;
-  }
-  // Filter to check for valid thumbnail below:
-
-  // sorting the beers
-  // sort by release date
-  // sort strength
-  // console.log(filteredbeers[0].first_brewed);
-  // console.log(filteredbeers[0].abv);
-  let sortedBeers;
-  if (sortDropDown === "default") {
-    sortedBeers = filteredbeers;
-  } else if (sortDropDown === "abvHighLow") {
-    sortedBeers = filteredbeers.sort((a, b) => b.abv - a.abv);
-  } else if (sortDropDown === "abvLowHigh") {
-    sortedBeers = filteredbeers.sort((a, b) => a.abv - b.abv);
-  } else if (sortDropDown === "releaseRecent") {
-    sortedBeers = filteredbeers.sort(function (a, b) {
-      let aa = a.first_brewed.split("/").reverse().join(),
-        bb = b.first_brewed.split("/").reverse().join();
-      return bb < aa ? -1 : bb > aa ? 1 : 0;
-    });
-  } else if (sortDropDown === "releaseOld") {
-    sortedBeers = filteredbeers.sort(function (a, b) {
-      let aa = a.first_brewed.split("/").reverse().join(),
-        bb = b.first_brewed.split("/").reverse().join();
-      return aa < bb ? -1 : aa > bb ? 1 : 0;
-    });
-  } else {
-    sortedBeers = filteredbeers;
-  }
+  const filteredbeers = acidFilterFunction(checked[2], beers);
+  const sortedBeers = sortBeersFunction(sortDropDown, filteredbeers);
 
   useEffect(() => {
     getBeers(searchTerm, dropDown, checked, valueMulti);
@@ -186,7 +118,7 @@ function App() {
             labelDropdown={"drop down"}
             options={[
               { label: "Name", value: "beerName" },
-              { label: "Food Pairings", value: "foodNamne" },
+              { label: "Food Pairings", value: "foodName" },
               { label: "Yeast", value: "yeastName" },
               { label: "Hops", value: "hopsName" },
               { label: "Malt", value: "maltName" },
