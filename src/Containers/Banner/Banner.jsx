@@ -1,19 +1,32 @@
-import React from "react";
-import "./Banner.scss";
+import { useState, useEffect } from "react";
 import Ticker from "react-ticker";
 
-const Banner = () => {
-  return (
-    <div className="Banner">
-      <Ticker className="ticker">
-        {({ index }) => (
-          <>
-            <p>{"beer"}</p>
-          </>
-        )}
-      </Ticker>
-    </div>
-  );
-};
+function App() {
+  const [beerz, setBeerz] = useState([]);
 
-export default Banner;
+  // API call
+  const getBeerz = async () => {
+    let url = "https://api.punkapi.com/v2/beers?&page=1&per_page=80";
+
+    // API call
+
+    try {
+      const res = await fetch(url);
+      const data = await res.json(url);
+      setBeerz(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+
+  console.log(beerz[6].tagline);
+
+  return (
+    <></>
+ 
+);
+}
+
+export default App;

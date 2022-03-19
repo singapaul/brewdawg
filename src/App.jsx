@@ -57,6 +57,7 @@ function App() {
     setSearchTerm(event.target.value);
   };
 
+  // API call
   const getBeers = async (search, dropDown, checked, valueMulti) => {
     const searchCat = searchCategoryFunction(dropDown);
 
@@ -106,7 +107,6 @@ function App() {
   return (
     <div className="App">
       <Hero />
-      <Banner />
       <div className="wrapper">
         <div className="sidebar">
           <Filter
