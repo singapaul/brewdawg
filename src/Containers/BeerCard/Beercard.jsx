@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Beercard.scss";
 import Ticker from "react-ticker";
+
 const Beercard = ({ beer }) => {
   const [tickerOn, setTickerOn] = useState(false);
   const hoveredBeer = () => {
@@ -10,6 +11,7 @@ const Beercard = ({ beer }) => {
   const handleClick = () => {
     setShowText(!showText);
   };
+  console.log(beer.image_url);
 
   return (
     <>
@@ -20,6 +22,8 @@ const Beercard = ({ beer }) => {
           onMouseLeave={hoveredBeer}
           style={{ background: "pink" }}
           onClick={handleClick}
+          // eslint-disable-next-line jsx-a11y/aria-role
+          role="beerCard"
         >
           <Ticker move={tickerOn} className="ticker">
             {({ index }) => (

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match form component snapshot 1`] = `
+<div>
+  <div
+    class="heroContainer"
+  >
+    <img
+      alt=""
+      class="heroContainer__image"
+      src="SiteLanding.png"
+    />
+    <h1
+      class="heroContainer__greeting"
+    >
+      Let's grab a Brew, Dawg
+    </h1>
+  </div>
+</div>
+`;
