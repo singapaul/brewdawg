@@ -1,38 +1,15 @@
 @use "../../assets/variables.scss" as *;
 
-// .filter {
-//   height: 50vh;
-//   width: 100%;
-//   background-color: pink;
-//   padding: 5px;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-between;
-//   border: solid 2px black;
-
-//   &__searchBox {
-//     display: flex;
-//     flex-direction: row;
-//     margin: 10px 0;
-//   }
-
-//   &__checkBoxes {
-//     margin: 10px 0;
-//   }
-
-//   &__dropDown {
-//     margin: 10px 0;
-//   }
-
-//   &__slider {
-//     margin: 10px 0;
-//   }
-// }
 
 .filter {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 100%;
+  border: solid 2px black;
+  position: sticky;
+  top: 0;
+  background-color: aliceblue;
+  z-index: 1;
 
   &__heading {
     width: 100%;
@@ -41,5 +18,59 @@
     display: flex;
     flex-direction: row;
     width: 100%;
+    align-items: center;
+    justify-content: space-around;
   }
+}
+
+//at 780 pixels or less 
+
+@media screen and (max-width: 780px) {
+
+  .filter {
+
+    background-color: blue;
+ 
+  
+    &__heading {
+      width: 100%;
+    }
+    &__selectors {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-items: center;
+      align-items: center;
+    }
+  }
+
+}
+
+
+
+//at 780 pixels or less 
+
+@media screen and (max-width: 420px) {
+
+  .filter {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: solid 2px black;
+    position: sticky;
+    top: 0;
+    background-color: red;
+    z-index: 1;
+  
+    &__heading {
+      width: 100%;
+    }
+    &__selectors {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: flex-start;
+      justify-content: space-around;
+    }
+  }
+
 }

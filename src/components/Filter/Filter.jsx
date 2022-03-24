@@ -50,43 +50,52 @@ const Filter = ({
 
   return (
     <div className="filter">
-      
       <h2 className="filter__heading">Filter Dawg</h2>
 
       <div className="filter__selectors">
-       
-        <SearchBox
-          searchTerm={searchTerm}
-          handleInput={handleInput}
-          label={searchlabel}
-        />
-        <Dropdown
-          label={labelDropdown}
-          options={options}
-          value={value}
-          onChange={handleSearchChange}
-        />
-        <h5>Checkbox Dawgs</h5>
-        {checkboxArr}
-        <h5>Sorty Dawgs</h5>
-        <Dropdown
-          label={labelSort}
-          options={sortOptions}
-          value={sortValue}
-          onChange={handleSortChange}
-        />
-        <h5>Strength Slider (ABV %) </h5>
-        <Box sx={sx}>
-          <Slider
-            getAriaLabel={() => "Temperature range"}
-            value={valueMulti}
-            onChange={handleSlideChange}
-            valueLabelDisplay={valueLabelDisplay}
-            min={min}
-            max={max}
-            disableSwap
+        <div className="filter__selectors-search">
+          <SearchBox
+            searchTerm={searchTerm}
+            handleInput={handleInput}
+            label={searchlabel}
           />
-        </Box>
+          <Dropdown
+            label={labelDropdown}
+            options={options}
+            value={value}
+            onChange={handleSearchChange}
+          />
+        </div>
+
+        <div className="filter__selectors-checkbox">
+          <h5>Checkbox Dawgs</h5>
+          {checkboxArr}
+        </div>
+
+        <div className="filter__selectors-sort">
+          <h5>Sorty Dawgs</h5>
+          <Dropdown
+            label={labelSort}
+            options={sortOptions}
+            value={sortValue}
+            onChange={handleSortChange}
+          />
+        </div>
+
+        <div className="filter__selectors-slider">
+          <h5>Strength Slider (ABV %) </h5>
+          <Box sx={sx}>
+            <Slider
+              getAriaLabel={() => "Temperature range"}
+              value={valueMulti}
+              onChange={handleSlideChange}
+              valueLabelDisplay={valueLabelDisplay}
+              min={min}
+              max={max}
+              disableSwap
+            />
+          </Box>
+        </div>
       </div>
     </div>
   );
