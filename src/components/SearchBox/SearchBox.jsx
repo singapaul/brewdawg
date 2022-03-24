@@ -6,7 +6,13 @@ const SearchBox = ({ label, searchTerm, handleInput }) => {
 
   return (
     <>
-      <form onSubmit={e=>{e.preventDefault()}} className="search-box">
+      <h5>Search dawgs</h5>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+        className="search-box"
+      >
         <label htmlFor={label} className="search-box__label">
           {label}
         </label>

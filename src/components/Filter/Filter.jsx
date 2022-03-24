@@ -50,27 +50,24 @@ const Filter = ({
 
   return (
     <div className="filter">
-      <h2>Filter Dawg</h2>
-      <h5>Search dawgs</h5>
+      
+      <h2 className="filter__heading">Filter Dawg</h2>
 
-      <div class="filter__searchBox">
+      <div className="filter__selectors">
+       
         <SearchBox
           searchTerm={searchTerm}
           handleInput={handleInput}
           label={searchlabel}
-          className="filter__searchBox-input"
         />
         <Dropdown
           label={labelDropdown}
           options={options}
           value={value}
           onChange={handleSearchChange}
-          className="filter__searchBox-list"
         />
-      </div>
-      <h5>Checkbox Dawgs</h5>
-      <div className="filter__checkBoxes">{checkboxArr}</div>
-      <div className="filter__dropDown">
+        <h5>Checkbox Dawgs</h5>
+        {checkboxArr}
         <h5>Sorty Dawgs</h5>
         <Dropdown
           label={labelSort}
@@ -78,8 +75,6 @@ const Filter = ({
           value={sortValue}
           onChange={handleSortChange}
         />
-      </div>
-      <div className="filter__slider">
         <h5>Strength Slider (ABV %) </h5>
         <Box sx={sx}>
           <Slider

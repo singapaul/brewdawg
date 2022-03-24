@@ -108,47 +108,44 @@ function App() {
     <div className="App">
       <Hero />
       <div className="wrapper">
-        <div className="sidebar">
-          <Filter
-            searchTerm={searchTerm}
-            handleInput={handleInput}
-            label={"Search"}
-            checked={checked}
-            handleChange={handleChange}
-            labelDropdown={"drop down"}
-            options={[
-              { label: "Name", value: "beerName" },
-              { label: "Food Pairings", value: "foodName" },
-              { label: "Yeast", value: "yeastName" },
-              { label: "Hops", value: "hopsName" },
-              { label: "Malt", value: "maltName" },
-            ]}
-            value={dropDown}
-            handleSearchChange={handleSearchChange}
-            // sort search props
-            labelSort={"sorty dropdown"}
-            sortOptions={[
-              { label: "Default", value: "default" },
-              { label: "ABV % (high to low)", value: "abvHighLow" },
-              { label: "ABV % (low to high)", value: "abvLowHigh" },
-              { label: "Release date (Earliest)", value: "releaseRecent" },
-              { label: "Release date (Oldest)", value: "releaseOld" },
-            ]}
-            sortValue={sortDropDown}
-            handleSortChange={handleSortChange}
-            // props for multi slide
-            sx={{ width: 150 }}
-            getAriaLabel={() => "Temperature range"}
-            handleSlideChange={handleSlideChange}
-            valueMulti={valueMulti}
-            valueLabelDisplay={"auto"}
-            min={0}
-            max={56}
-          />
-        </div>
-        <div className="main">
-          <Grid beers={sortedBeers} />
-        </div>
+        <Filter
+          searchTerm={searchTerm}
+          handleInput={handleInput}
+          label={"Search"}
+          checked={checked}
+          handleChange={handleChange}
+          labelDropdown={"drop down"}
+          options={[
+            { label: "Name", value: "beerName" },
+            { label: "Food Pairings", value: "foodName" },
+            { label: "Yeast", value: "yeastName" },
+            { label: "Hops", value: "hopsName" },
+            { label: "Malt", value: "maltName" },
+          ]}
+          value={dropDown}
+          handleSearchChange={handleSearchChange}
+          // sort search props
+          labelSort={"sorty dropdown"}
+          sortOptions={[
+            { label: "Default", value: "default" },
+            { label: "ABV % (high to low)", value: "abvHighLow" },
+            { label: "ABV % (low to high)", value: "abvLowHigh" },
+            { label: "Release date (Earliest)", value: "releaseRecent" },
+            { label: "Release date (Oldest)", value: "releaseOld" },
+          ]}
+          sortValue={sortDropDown}
+          handleSortChange={handleSortChange}
+          // props for multi slide
+          sx={{ width: 150 }}
+          getAriaLabel={() => "Temperature range"}
+          handleSlideChange={handleSlideChange}
+          valueMulti={valueMulti}
+          valueLabelDisplay={"auto"}
+          min={0}
+          max={56}
+        />
+
+        <Grid beers={sortedBeers} />
       </div>
     </div>
   );

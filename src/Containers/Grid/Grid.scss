@@ -1,10 +1,8 @@
-@use "../../assets/variables.scss" as *;
+@use "../../assets/_variables.scss" as *;
 
 .Grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 0;
-  width: 890px;
+  display:grid;
+  grid-template-columns: repeat(auto-fit, $card-width );
+  // grid-template-rows: repeat(auto-fit, $card-width);
   
-
 }
