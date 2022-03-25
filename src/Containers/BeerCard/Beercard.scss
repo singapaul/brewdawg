@@ -2,10 +2,10 @@
 
 .beerCard {
   border: 2px solid black;
-  height: 280px;
+  height: $card-width;
   width: $card-width;
   background: pink;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   display: grid;
   grid-template-columns: 5% 1fr 5%;
@@ -49,8 +49,8 @@
 
 .beerCardClick {
   border: 2px solid black;
-  height: 280px;
-  aspect-ratio: auto 1/1;
+  width: $card-width;
+  height: $card-width;
   background: pink;
   margin: 0;
   padding: 0;

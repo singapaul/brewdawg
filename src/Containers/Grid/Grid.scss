@@ -1,8 +1,15 @@
 @use "../../assets/_variables.scss" as *;
 
 .Grid {
-  display:grid;
-  grid-template-columns: repeat(auto-fit, $card-width );
-  // grid-template-rows: repeat(auto-fit, $card-width);
-  
+  // display:grid;
+  // grid-template-columns: repeat(auto-fill, $card-width );
+  // // grid-template-rows: repeat(auto-fit, $card-width);
+  // margin: 0 auto;
+  // align-self: center;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, $card-width));
+  justify-content: center;
+  grid-gap: 1rem;
+  margin: 20px;
 }

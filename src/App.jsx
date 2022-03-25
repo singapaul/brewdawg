@@ -145,7 +145,10 @@ function App() {
           max={56}
         />
 
-        <Grid beers={sortedBeers} />
+
+        <div className="Grid-con">
+          <Grid beers={sortedBeers} />
+        </div>
       </div>
     </div>
   );
