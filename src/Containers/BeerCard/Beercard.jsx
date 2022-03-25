@@ -1,9 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import "./Beercard.scss";
 import Ticker from "react-ticker";
 import useColorThief from "use-color-thief";
 
 const Beercard = ({ beer }) => {
+  const imgRef = useRef();
+
+  const { color } = useColorThief(imgRef, {
+    format: "hex",
+    colorCount: 5,
+    quality: 10,
+  });
+
+  console.log(color);
+
   const [tickerOn, setTickerOn] = useState(false);
   const hoveredBeer = () => {
     setTickerOn(!tickerOn);
@@ -12,25 +22,14 @@ const Beercard = ({ beer }) => {
   const handleClick = () => {
     setShowText(!showText);
   };
-  console.log(beer.image_url);
 
-  const source = beer.image_url
-
-  // const { color, palette } = useColorThief(source, {
-  //   format: "hex",
-  //   colorCount: 2,
-  //   quality: 1,
-  // });
-
-  // console.log(color);
 
   return (
     <>
       {showText ? (
         <div
-
           className="beerCard"
-          // style={{background: palette[0]}}
+          style={{ background: color }}
           onMouseEnter={hoveredBeer}
           onMouseLeave={hoveredBeer}
           onClick={handleClick}
@@ -47,12 +46,17 @@ const Beercard = ({ beer }) => {
 
           <div className="beerCard__result">
             <h1 className="beerCard__result-name">{beer.name}</h1>
-            <img
-              className="beerCard__result-image"
-              src={beer.image_url}
-              alt=""
-            />
-            <p className="beerCard__result-abv">ABV {beer.abv} %</p>
+
+            <div className="beerCard__result-body">
+              <p className="beerCard__result-body-ph">pH  {beer.ph}</p>
+              <img
+                className="beerCard__result-body-image"
+                src={beer.image_url}
+                alt=""
+                ref={imgRef}
+              />
+              <p className="beerCard__result-body-abv">ABV {beer.abv} %</p>
+            </div>
           </div>
         </div>
       ) : (
@@ -67,7 +71,6 @@ const Beercard = ({ beer }) => {
               <li>{beer.food_pairing[1]}</li>
               <li>{beer.food_pairing[2]}</li>
             </ul>
-            <p>pH: {beer.ph}</p>
           </div>
         </div>
       )}

@@ -22,30 +22,59 @@
     grid-area: 2/2/4/3;
     box-sizing: border-box;
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: auto;
 
     &-name {
       color: $color-white;
       text-align: center;
-      font-size: 25px;
       padding: 15px 15px;
       flex-basis: auto;
+      font-size: 1.2rem;
+
+      h1 {
+        text-size-adjust: auto;
+        max-height: 5vh;
+      }
     }
 
-    &-image {
-      height: 40%;
-      flex-shrink: 2;
-    }
+    &-body {
+      display: flex;
+      flex-direction: row;
+      justify-items: space-between;
+      align-items: center;
+      height: 80%;
 
-    &-abv {
-      color: $color-white;
-      font-size: 20px;
-      font-weight: bold;
-      flex-basis: auto;
+      &-ph {
+        color: $color-white;
+        font-size: 20px;
+        font-weight: bold;
+        writing-mode: vertical-rl;
+        padding-right: 20px;
+      }
+
+      &-image {
+        border: 2px white solid;
+        padding: 20px;
+        background: wheat;
+        height: 80%;
+      
+
+        image {
+          height:100%;
+          width: 100%;
+        }
+      }
+
+      &-abv {
+        color: $color-white;
+        font-size: 20px;
+        font-weight: bold;
+        writing-mode: vertical-rl;
+        padding-left: 20px;
+      }
     }
   }
 }
-
 
 .beerCardClick {
   border: 2px solid black;
