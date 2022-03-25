@@ -1,5 +1,4 @@
 import "./App.scss";
-import Banner from "./Containers/Banner/Banner";
 import Hero from "./Containers/Hero/Hero";
 import Grid from "./Containers/Grid/Grid";
 import { useState, useEffect } from "react";
