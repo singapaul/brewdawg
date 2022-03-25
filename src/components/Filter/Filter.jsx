@@ -56,6 +56,8 @@ const Filter = ({
     window.innerWidth > 1024
   );
 
+  console.log(windowIsDesktop)
+
   const handleResize = () => {
     setwindowIsDesktop(window.innerWidth > 1024);
   };

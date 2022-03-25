@@ -1,17 +1,17 @@
-@use "../../assets/variables.scss" as *;
+// @use "../../assets/variables.scss" as *;
 
-.Banner{
-  margin-top: 0;
-  height: 10vh;
-  background: $color-main;
-  overflow: hidden;
-  white-space: nowrap;
-  display: flex;
+// .Banner{
+//   margin-top: 0;
+//   height: 10vh;
+//   background: $color-main;
+//   overflow: hidden;
+//   white-space: nowrap;
+//   display: flex;
 
-  &__text{
-    color: $color-white;
-    font-size: 2.0em;
-    justify-self: center;
-    align-self: center;
-  }
-}
+//   &__text{
+//     color: $color-white;
+//     font-size: 2.0em;
+//     justify-self: center;
+//     align-self: center;
+//   }
+// }
