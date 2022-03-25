@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Beercard.scss";
 import Ticker from "react-ticker";
+import useColorThief from "use-color-thief";
 
 const Beercard = ({ beer }) => {
   const [tickerOn, setTickerOn] = useState(false);
@@ -13,14 +14,25 @@ const Beercard = ({ beer }) => {
   };
   console.log(beer.image_url);
 
+  const source = beer.image_url
+
+  // const { color, palette } = useColorThief(source, {
+  //   format: "hex",
+  //   colorCount: 2,
+  //   quality: 1,
+  // });
+
+  // console.log(color);
+
   return (
     <>
       {showText ? (
         <div
+
           className="beerCard"
+          // style={{background: palette[0]}}
           onMouseEnter={hoveredBeer}
           onMouseLeave={hoveredBeer}
-          style={{ background: "pink" }}
           onClick={handleClick}
           // eslint-disable-next-line jsx-a11y/aria-role
           role="beerCard"
