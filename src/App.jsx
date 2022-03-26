@@ -145,9 +145,9 @@ function App() {
         />
 
 
-        <div className="Grid-con">
+       
           <Grid beers={sortedBeers} />
-        </div>
+       
       </div>
     </div>
   );
