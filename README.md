@@ -1,9 +1,9 @@
 ## BrewDawg
-## ![](./Brewdawg.png)
+## ![](./brewdog.png)
 
 Brewdawg is a react based app which allows users to browse, search and filter beers produced by Brewdog. The project is powered with the Brewdog API. The functionality of the app was expanded using npm packages including ticker & MUI components.
 
-Check it out: https://singapaul.github.io/brewdawg/
+Check it out: https://singapaul.github.io/brewdog/
 
 ## Tech Stack
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
