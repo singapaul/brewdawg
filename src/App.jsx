@@ -14,6 +14,7 @@ import {
 } from "./utilities/functions.js";
 
 function App() {
+  const [hero, setShowHero] = useState(true);
   const [beers, setBeers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [checked, setChecked] = useState(
@@ -30,6 +31,10 @@ function App() {
 
   // Multi slide state management
   const [valueMulti, setValue] = useState([0, 20]);
+
+  const hideHero = () =>{
+    setShowHero(false);
+  }
 
   const handleSlideChange = (event, newValue) => {
     setValue(newValue);
@@ -105,7 +110,7 @@ function App() {
 
   return (
     <div className="App">
-      <Hero />
+      {hero && <Hero hideHero={hideHero} />}
       <div className="wrapper">
         <Filter
           searchTerm={searchTerm}

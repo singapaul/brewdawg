@@ -6,7 +6,7 @@ import "./Filter.scss";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import filterIcon from "../../assets/images/Filter.png";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 // This is just a middle child
 const Filter = ({
@@ -50,21 +50,8 @@ const Filter = ({
     );
   });
 
-  const [showMenu, setShowMenu] = useState(true);
+  const [showMenu, setShowMenu] = useState(false);
 
-  const [windowIsDesktop, setwindowIsDesktop] = useState(
-    window.innerWidth > 1024
-  );
-
-  console.log(windowIsDesktop)
-
-  const handleResize = () => {
-    setwindowIsDesktop(window.innerWidth > 1024);
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-  });
 
   const handleClick = () => {
     setShowMenu(!showMenu);
