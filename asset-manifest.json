@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/brewdawg/static/css/main.a31a6b6b.css",
-    "main.js": "/brewdawg/static/js/main.c105f4f5.js",
+    "main.js": "/brewdawg/static/js/main.1b8192da.js",
     "static/js/787.4c110237.chunk.js": "/brewdawg/static/js/787.4c110237.chunk.js",
     "static/media/SiteLanding.png": "/brewdawg/static/media/SiteLanding.6d6194e655f1c77b46ce.png",
     "index.html": "/brewdawg/index.html",
     "main.a31a6b6b.css.map": "/brewdawg/static/css/main.a31a6b6b.css.map",
-    "main.c105f4f5.js.map": "/brewdawg/static/js/main.c105f4f5.js.map",
+    "main.1b8192da.js.map": "/brewdawg/static/js/main.1b8192da.js.map",
     "787.4c110237.chunk.js.map": "/brewdawg/static/js/787.4c110237.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a31a6b6b.css",
-    "static/js/main.c105f4f5.js"
+    "static/js/main.1b8192da.js"
   ]
 }
